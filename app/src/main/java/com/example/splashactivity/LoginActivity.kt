@@ -12,9 +12,10 @@ import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
-    var isEmailOk = false
-    var isPasswordOk = false
-    var validationEmail = false
+    private var isEmailOk = false
+    private var isPasswordOk = false
+    private var validationEmail = false
+    private var validationPassword = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun textChangeDefault(editText: EditText, textInput: TextInputLayout, errorString: Int) {
-        editText.doOnTextChanged { text, _, _, _ ->
+        editText.doOnTextChanged { text, start, _, _ ->
             if(text?.isBlank() == true) {
                 textInput.error = getString(R.string.errorMessage, getString(errorString))
                 setByTag(editText.tag as String, false)
@@ -44,6 +45,10 @@ class LoginActivity : AppCompatActivity() {
 
             if(editText.tag == getString(R.string.string_email)) {
                 validatingEmail(text.toString())
+            }
+
+            if(editText.tag == getString(R.string.string_password)) {
+                passwordLength(start+1)
             }
 
             activatingButton()
@@ -60,6 +65,16 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    private fun passwordLength(count: Int) {
+        if(count >= 5) {
+            validationPassword = true
+            tilPassword.isErrorEnabled = false
+        }else {
+            validationPassword = false
+            tilPassword.error = getString(R.string.validationPassword)
+        }
+    }
+
     private fun setByTag(tag: String, isOk: Boolean) {
         when(tag) {
             getString(R.string.string_email) -> isEmailOk = isOk
@@ -69,7 +84,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun activatingButton(): Boolean {
         val isOk: Boolean
-        if(isEmailOk && isPasswordOk && validationEmail) {
+        if(isEmailOk && isPasswordOk && validationEmail && validationPassword) {
             btLogIn.isEnabled = true
             isOk = true
         }else {

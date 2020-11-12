@@ -4,42 +4,25 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import android.widget.EditText
-import androidx.core.view.doOnAttach
 import androidx.core.widget.doOnTextChanged
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
-import java.util.zip.Inflater
 
 class RegisterActivity : AppCompatActivity() {
-    var isNameOk = false
-    var isEmailOk = false
-    var isPasswordOk = false
-    var isConfirmPasswordOk = false
-    var validationEmail = false
-    var validationPassword = false
-    var validationName = false
-    lateinit var viewModel: MainViewModel
-
-    override fun onRestart() {
-        super.onRestart()
-        viewModel.setUserData(UserData(tietNameRegister.text,
-            tietEmailRegister.text,
-            tietPasswordRegister.text,
-            tietConfirmPasswordRegister.text
-        ))
-
-    }
+    private var isNameOk = false
+    private var isEmailOk = false
+    private var isPasswordOk = false
+    private var isConfirmPasswordOk = false
+    private var validationEmail = false
+    private var validationPassword = false
+    private var validationName = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         textChangeDefault(tietNameRegister, tilNameRegister, R.string.string_name)
         textChangeDefault(tietEmailRegister, tilEmailRegister, R.string.string_email)
@@ -51,16 +34,10 @@ class RegisterActivity : AppCompatActivity() {
         btRegister.setOnClickListener {
             startMenuActivity(this@RegisterActivity)
         }
-        viewModel.usersDatas.observe(this) {
-            tietNameRegister.text = it.name
-            tietEmailRegister.text = it.email
-            tietPasswordRegister.text = it.password
-            tietConfirmPasswordRegister.text = it.confirmPassword
-        }
     }
 
     private fun textChangeDefault(editText: EditText, textInput: TextInputLayout, errorString: Int) {
-        editText.doOnTextChanged { text, start, before, count ->
+        editText.doOnTextChanged { text, start, _, count ->
             if(text?.isBlank() == true) {
                 textInput.error = getString(R.string.errorMessage, getString(errorString))
                 setByTag(editText.tag as String, false)
@@ -75,14 +52,11 @@ class RegisterActivity : AppCompatActivity() {
 
             if(editText.tag == getString(R.string.string_password)) {
                 passwordLength(start+1)
-                Log.i("test - password", start.toString())
             }
 
             if(editText.tag == getString(R.string.string_name)) {
-                nameLength(start+1)
-                Log.i("test - name", start.toString())
+                nameLength(count)
             }
-
             activatingButton()
         }
     }
@@ -99,11 +73,23 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun passwordLength(count: Int) {
-        validationPassword = count >= 5
+        if(count >= 5) {
+            validationPassword = true
+            tilPasswordRegister.isErrorEnabled = false
+        }else {
+            validationPassword = false
+            tilPasswordRegister.error = getString(R.string.validationPassword)
+        }
     }
 
     private fun nameLength(count: Int) {
-        validationName = count >= 2
+        if(count >= 2) {
+            validationName = true
+            tilNameRegister.isErrorEnabled = false
+        }else {
+            validationName = false
+            tilNameRegister.error = getString(R.string.validationName)
+        }
     }
 
     private fun validatingEmail(email: String) {

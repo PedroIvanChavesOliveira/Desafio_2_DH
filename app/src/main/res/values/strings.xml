@@ -14,4 +14,6 @@
     <string name="string_main_course">Pratos Principais</string>
     <string name="errorMessage">O campo %1$s é obrigatório</string>
     <string name="validationEmail">O Email deve ser válido</string>
+    <string name="validationPassword">A senha deve ter ao menos 5 caracteres</string>
+    <string name="validationName">O nome deve ter ao menos 2 caracteres</string>
 </resources>
