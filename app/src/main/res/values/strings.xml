@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">DigitalHouseFoods</string>
+    <string name="string_email">Email</string>
+    <string name="string_password">Senha</string>
+    <string name="string_logIn">Log In</string>
+    <string name="string_register">Registrar</string>
+    <string name="string_or">OR</string>
+    <string name="string_name">Nome</string>
+    <string name="string_confirm_password">Confirmar senha</string>
+    <string name="page_title">Registrar</string>
+    <string name="login_title">DigitalHouseFood</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="string_main_course">Pratos Principais</string>
+    <string name="errorMessage">O campo %1$s é obrigatório</string>
+    <string name="validationEmail">O Email deve ser válido</string>
+</resources>

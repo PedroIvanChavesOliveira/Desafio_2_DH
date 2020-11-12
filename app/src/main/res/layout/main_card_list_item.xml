@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/vgCardListRestaurant"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
+        style="@style/CardViewDefault"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivCardPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                tools:src="@drawable/splash_image"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvCardTitle"
+                style="@style/TextViewTitleCardDefault"
+                tools:text="Tony Roma's"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivCardPhoto"
+                app:layout_constraintBottom_toTopOf="@id/tvCardSubtitle"/>
+
+            <TextView
+                android:id="@+id/tvCardSubtitle"
+                style="@style/TextViewSubtitleCardDefault"
+                tools:text="Av Lavandisca, 717, - Indianápolis, São Paulo"
+                app:layout_constraintTop_toBottomOf="@id/tvCardTitle"
+                app:layout_constraintStart_toStartOf="@id/tvCardTitle"
+                app:layout_constraintBottom_toTopOf="@id/tvCardOperation"
+                />
+
+            <TextView
+                android:id="@+id/tvCardOperation"
+                style="@style/TextViewSubtitleCardDefault"
+                android:layout_marginBottom="10dp"
+                tools:text="Fecha ás 22:00"
+                app:layout_constraintTop_toBottomOf="@id/tvCardSubtitle"
+                app:layout_constraintStart_toStartOf="@id/tvCardTitle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

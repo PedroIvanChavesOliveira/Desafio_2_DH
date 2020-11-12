@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".LoginActivity">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilEmail"
+            style="@style/TextInputDefault"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:hint="@string/string_email"
+            app:layout_constraintBottom_toTopOf="@id/tilPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietEmailLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:tag="@string/string_email"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPassword"
+            style="@style/TextInputDefault"
+            android:hint="@string/string_password"
+            app:layout_constraintStart_toStartOf="@id/tilEmail"
+            app:layout_constraintTop_toBottomOf="@id/tilEmail"
+            app:layout_constraintEnd_toEndOf="@id/tilEmail"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietPasswordLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:tag="@string/string_password"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btLogIn"
+            style="@style/ButtonDefault"
+            android:text="@string/string_logIn"
+            android:enabled="false"
+            android:background="@drawable/button_disabled"
+            app:layout_constraintStart_toStartOf="@id/tilEmail"
+            app:layout_constraintEnd_toEndOf="@id/tilEmail"
+            app:layout_constraintTop_toBottomOf="@id/tilPassword"
+            app:layout_constraintBottom_toTopOf="@id/tvOr"
+            />
+
+        <TextView
+            android:id="@+id/tvOr"
+            android:text="@string/string_or"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btLogIn"
+            app:layout_constraintBottom_toTopOf="@id/btRegisterLogin"
+            />
+
+        <Button
+            android:id="@+id/btRegisterLogin"
+            style="@style/ButtonDefault"
+            android:text="@string/string_register"
+            android:background="@color/buttonRed"
+            app:layout_constraintStart_toStartOf="@id/tilEmail"
+            app:layout_constraintEnd_toEndOf="@id/tilEmail"
+            app:layout_constraintTop_toBottomOf="@id/tvOr"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

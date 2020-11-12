@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".RegisterActivity">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilNameRegister"
+            style="@style/TextInputDefault"
+            android:hint="@string/string_name"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tilEmailRegister">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietNameRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:tag="@string/string_name"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilEmailRegister"
+            style="@style/TextInputDefault"
+            android:hint="@string/string_email"
+            app:layout_constraintStart_toStartOf="@id/tilNameRegister"
+            app:layout_constraintTop_toBottomOf="@id/tilNameRegister"
+            app:layout_constraintEnd_toEndOf="@id/tilNameRegister"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietEmailRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:tag="@string/string_email"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPasswordRegister"
+            style="@style/TextInputDefault"
+            android:hint="@string/string_password"
+            app:layout_constraintStart_toStartOf="@id/tilNameRegister"
+            app:layout_constraintTop_toBottomOf="@id/tilEmailRegister"
+            app:layout_constraintEnd_toEndOf="@id/tilNameRegister"
+            app:layout_constraintBottom_toTopOf="@id/tilConfirmPasswordRegister">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietPasswordRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:tag="@string/string_password"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilConfirmPasswordRegister"
+            style="@style/TextInputDefault"
+            android:hint="@string/string_confirm_password"
+            app:layout_constraintStart_toStartOf="@id/tilNameRegister"
+            app:layout_constraintTop_toBottomOf="@id/tilPasswordRegister"
+            app:layout_constraintEnd_toEndOf="@id/tilNameRegister"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietConfirmPasswordRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:tag="@string/string_confirm_password"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btRegister"
+            style="@style/ButtonDefault"
+            android:text="@string/string_register"
+            android:enabled="false"
+            android:background="@drawable/button_disabled"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintStart_toStartOf="@id/tilNameRegister"
+            app:layout_constraintEnd_toEndOf="@id/tilNameRegister"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
