@@ -7,4 +7,6 @@ import kotlinx.android.parcel.Parcelize
 class Restaurant(val restaurantImage: String,
                  val restaurantName: String,
                  val restaurantAdress: String,
-                 val restaurantOperation: String): Parcelable {}
+                 val restaurantOperation: String,
+                 val restaurantList: List<MainCourse>
+): Parcelable {}
